@@ -45,7 +45,8 @@ $(function () {
   $("#year").text(new Date().getFullYear());
 
   const processVideo = document.getElementById("process-video");
-  if (processVideo) {
+  // Only attempt poster capture if this is an actual <video> element
+  if (processVideo && processVideo.tagName && processVideo.tagName.toLowerCase() === "video") {
     const capturePoster = () => {
       if (!(processVideo.videoWidth && processVideo.videoHeight)) return;
       const canvas = document.createElement("canvas");
